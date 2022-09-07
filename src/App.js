@@ -1,19 +1,32 @@
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+ //import Home from "./pages/Home";
+ import Video from "./pages/Video";
+ //import SignIn from "./pages/SignIn";
 
 function App() {
   return (
-    <div className="flex"  >
+  <div className="flex">
+     <BrowserRouter>
       {/*sidebar*/}
       <Menu />
       <main className="fl" >
        <Navbar />
-       <wrapper className="ml-6 text-[25px] text-red-600 font-bold font-[larken] ">
-          VIDEO APP
+       <wrapper className="">
+         <Routes>
+                <Route path="/">
+                  {/* <Route index element={<Home />} />
+                  <Route path="signin" element={<SignIn />} /> */}
+                  <Route path="video">
+                    <Route path=":id" element={<Video />} />
+                  </Route>
+                </Route>
+          </Routes>
        </wrapper>
       </main>
-
-      </div>
+     </BrowserRouter>
+   </div>
   );
 }
 
